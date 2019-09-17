@@ -1,0 +1,10 @@
+<div class="row mt-3">
+        <div class="col-md-12">
+            <app-prg [wd]="curprog"></app-prg>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <app-btn (operation)=" curprog = ($event == 1 ? curprog+1 : curprog-1) "></app-btn>
+        </div>
+    </div>
