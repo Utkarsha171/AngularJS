@@ -863,6 +863,124 @@
           }
         }
       }
+    },
+    "switch": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/switch",
+      "sourceRoot": "projects/switch/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/switch",
+            "index": "projects/switch/src/index.html",
+            "main": "projects/switch/src/main.ts",
+            "polyfills": "projects/switch/src/polyfills.ts",
+            "tsConfig": "projects/switch/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/switch/src/favicon.ico",
+              "projects/switch/src/assets"
+            ],
+            "styles": [
+              "projects/switch/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/switch/src/environments/environment.ts",
+                  "with": "projects/switch/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "switch:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "switch:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "switch:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/switch/src/test.ts",
+            "polyfills": "projects/switch/src/polyfills.ts",
+            "tsConfig": "projects/switch/tsconfig.spec.json",
+            "karmaConfig": "projects/switch/karma.conf.js",
+            "assets": [
+              "projects/switch/src/favicon.ico",
+              "projects/switch/src/assets"
+            ],
+            "styles": [
+              "projects/switch/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/switch/tsconfig.app.json",
+              "projects/switch/tsconfig.spec.json",
+              "projects/switch/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/switch/e2e/protractor.conf.js",
+            "devServerTarget": "switch:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "switch:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "intro-app"
 }
